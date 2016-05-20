@@ -59,7 +59,7 @@ listen stats :1936
 
 frontend public
 #  bind :9080
-  bind :${ROUTER_SERVICE_HTTP_PORT} ${ROUTER_SERVICE_HTTP_PORT_BIND_OPTONS}
+  bind :${ROUTER_SERVICE_HTTP_PORT}
   mode http
   tcp-request inspect-delay 5s
   tcp-request content accept if HTTP
@@ -85,7 +85,7 @@ frontend public
 # that terminates encryption in this router (edge)
 frontend public_ssl
 #  bind :9443
-  bind :${ROUTER_SERVICE_HTTPS_PORT} ${ROUTER_SERVICE_HTTPS_PORT_BIND_OPTONS}
+  bind :${ROUTER_SERVICE_HTTPS_PORT}
   tcp-request  inspect-delay 5s
   tcp-request content accept if { req_ssl_hello_type 1 }
 
