@@ -147,7 +147,7 @@ frontend fe_sni
 ##########################################################################
 # backend for when sni does not exist, or ssl term needs to happen on the edge
 backend be_no_sni
-  server fe_no_sni 127.0.0.1:10443 weight 1 send-proxy
+  server fe_no_sni 127.0.0.1:10443 weight 1 send-proxy-v2-ssl-cn
 
 frontend fe_no_sni
   # terminate ssl on edge
