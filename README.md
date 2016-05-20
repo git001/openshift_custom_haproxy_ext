@@ -39,7 +39,13 @@ oadm router infra-router -n default \
  --stats-port=1938 
 ```
 
-oc env -n default dc/infra-router ROUTER_SERVICE_HTTP_PORT=9080 ROUTER_SERVICE_HTTPS_PORT=9443 ROUTE_LABELS="route=intern" TZ="UTC"
+oc env -n default dc/infra-router ROUTER_SERVICE_HTTP_PORT=9080 ROUTER_SERVICE_HTTPS_PORT=9443 ROUTE_LABELS="route=intern" TZ="UTC" ROUTER_SERVICE_HTTP_PORT_BIND_OPTONS="" ROUTER_SERVICE_HTTPS_PORT_BIND_OPTONS=""
+
+
+## accept-proxy for ROUTER_SERVICE_*_PORT
+
+In this template the both variables *ROUTER_SERVICE_HTTP_PORT_BIND_OPTONS* *ROUTER_SERVICE_HTTPS_PORT_BIND_OPTONS* add the possibility to use the proxy protocol on the edge ports.
+
 
 # External dependency
 
