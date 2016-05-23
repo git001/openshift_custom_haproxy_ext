@@ -1,4 +1,11 @@
-# custom haproxy
+= custom haproxy
+
+:toc: macro
+:toc-title:
+
+toc::[]
+
+= Introduction
 
 Due to the fact that in Openshift 3.1 the default router template have hardcoded the listening ports in need to create my own template.
 
@@ -15,7 +22,7 @@ oc env dc/infra-router ROUTER_SERVICE_HTTP_PORT=9080 ROUTER_SERVICE_HTTPS_PORT=9
 oc scale rc infra-router-2 --replicas=2
 ```
 
-## Openshift 3.2
+== Openshift 3.2
 
 In 3.2 the feature was added to set the listening ports over environment variables.
 
@@ -25,7 +32,7 @@ I have setuped this template in the same way to be able to use it similar as in 
 
 After the image is builded you can now use the same syntax as describe in the 3.2 doc.
 
-# router setup
+= router setup
 
 ```
 oadm router infra-router -n default \
@@ -42,12 +49,18 @@ oadm router infra-router -n default \
 oc env -n default dc/infra-router ROUTER_SERVICE_HTTP_PORT=9080 ROUTER_SERVICE_HTTPS_PORT=9443 ROUTE_LABELS="route=intern" TZ="UTC" ROUTER_SERVICE_HTTP_PORT_BIND_OPTONS="" ROUTER_SERVICE_HTTPS_PORT_BIND_OPTONS=""
 
 
-## accept-proxy for ROUTER_SERVICE_*_PORT
+== accept-proxy for ROUTER_SERVICE_*_PORT
+
+[important-caption]
+The **BIND_OPTONS** are only possible with haproxy 1.6 which is not used in openshift v3.1,2
+
+:icons:
+:iconsdir: icons
 
 In this template the both variables *ROUTER_SERVICE_HTTP_PORT_BIND_OPTONS* *ROUTER_SERVICE_HTTPS_PORT_BIND_OPTONS* add the possibility to use the proxy protocol on the edge ports.
 
 
-# External dependency
+= External dependency
 
 On the nodes on which the haproxy runs needs to open the ports with iptables.
 
