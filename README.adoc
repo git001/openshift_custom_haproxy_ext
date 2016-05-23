@@ -53,7 +53,6 @@ oc env -n default dc/infra-router ROUTER_SERVICE_HTTP_PORT=9080 ROUTER_SERVICE_H
 
 [important-caption]
 The **BIND_OPTONS** are only possible with haproxy 1.6 which is not used in openshift v3.1,2
-
 :icons:
 :iconsdir: icons
 
