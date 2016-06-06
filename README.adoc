@@ -18,7 +18,7 @@ You can test it with this commands
 ```
 oc new-app https://github.com/git001/openshift_custom_haproxy_ext.git --name=infra-router
 oc scale rc infra-router-2 --replicas=0
-oc env dc/infra-router ROUTER_SERVICE_HTTP_PORT=9080 ROUTER_SERVICE_HTTPS_PORT=9443 ROUTE_LABELS="route=intern" TZ="UTC"
+oc env dc/infra-router ROUTER_SERVICE_HTTP_PORT=9080 ROUTER_SERVICE_HTTPS_PORT=9443 ROUTER_SERVICE_NO_SNI_PORT=20443 ROUTER_SERVICE_SNI_PORT=20444 ROUTE_LABELS="route=intern" TZ="UTC"
 oc scale rc infra-router-2 --replicas=2
 ```
 
